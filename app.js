@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // ─── Conexão MongoDB ────────────────────────────────────────────────────────────
 mongoose.connect(
-  'mongodb+srv://iagom63im:YIznlIgbhqVfaBOC@almoxarifadosmart20.8ijh75f.mongodb.net/almoxarifadosmart?retryWrites=true&w=majority',
+  'mongodb+srv://iagom63:%4000810262428%40An@almoxarifadosmartgetawa.vonmwyh.mongodb.net/AlmoxarifadoSmartGetAWay?retryWrites=true&w=majority&appName=AlmoxarifadoSmartGetAWay',
   { useNewUrlParser: true, useUnifiedTopology: true }
 );
 mongoose.connection.on('error', err => console.error('❌ MongoDB error:', err));
