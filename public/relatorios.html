@@ -29,24 +29,26 @@
             <option value="estoque">Estoque</option>
         </select>
 
-        <button onclick="generateReport()">Gerar Relatório</button>
+        <button type="button" onclick="generateReport()">Gerar Relatório</button>
     </div>
 
     <!-- Botão para Relatório do Dia -->
     <div class="actions">
-        <button onclick="generateTodayReport()">Relatório do Dia</button>
-        <button onclick="exportReport()">Exportar PDF</button>
-        <button onclick="viewReports()">Visualizar Relatórios</button>
+        <button type="button" onclick="generateTodayReport()">Relatório do Dia</button>
+        <button type="button" onclick="exportReport()">Exportar Relatório Filtrado</button>
+        <button type="button" onclick="viewReports()">Visualizar Relatórios</button>
     </div>
 
     <!-- Tabela de Relatórios -->
     <table id="reportTable">
         <thead>
             <tr>
+                <th>Nome</th>
+                <th>Descrição</th>
+                <th>Quantidade</th>
                 <th>Data</th>
-                <th>Tipo</th>
-                <th>Total de Registros</th>
-                <th>Ações</th>
+                <th>Entregue?</th>
+                <th>Descontinuado?</th>
             </tr>
         </thead>
         <tbody>
@@ -56,33 +58,33 @@
 </div>
 
 <script>
-    // Preenche a data atual e define valores padrão para os inputs de data
     window.addEventListener('DOMContentLoaded', () => {
         const today = new Date().toISOString().split('T')[0];
         document.getElementById('currentDate').textContent = new Date().toLocaleDateString();
         document.getElementById('startDate').value = today;
         document.getElementById('endDate').value = today;
     });
-    
-    // Redireciona para download do Excel filtrado
+
     function generateReport() {
         const start = document.getElementById('startDate').value;
         const end   = document.getElementById('endDate').value;
+        // Redireciona para download do Excel filtrado
         window.location.href = `/exportar-relatorio-excel?inicio=${start}&fim=${end}`;
     }
-    
+
     function generateTodayReport() {
+        // Download do relatório do dia atual
         window.location.href = '/exportar-relatorio';
     }
-    
+
     function exportReport() {
-        // Você já tem a ação em generateReport; pode chamar generateReport aqui
+        // Reaproveita a lógica de geração geral
         generateReport();
     }
-    
+
     function viewReports() {
-        // Implementar visualização de relatórios gerados
-        alert('Visualizando relatórios');
+        // Caso implemente visualização inline de relatórios
+        alert('Visualizar relatórios não implementado.');
     }
 </script>
 
